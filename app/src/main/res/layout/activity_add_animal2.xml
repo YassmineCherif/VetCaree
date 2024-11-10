@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    android:padding="16dp"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.activities.AddAnimalActivity">
+
+    <TextView
+        android:id="@+id/addAnimalHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:text=" Add Animal :"
+        android:textColor="@color/orange"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        />
+
+    <ImageView
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/addAnimalHeading"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/baseline_done_24" />
+
+    <EditText
+        android:id="@+id/addAnimalTitle"
+        android:layout_width="350dp"
+        android:layout_marginLeft="10dp"
+        android:layout_height="60dp"
+        android:hint="Enter your pet's name"
+        android:padding="12dp"
+        android:textSize="18sp"
+        android:layout_below="@id/addAnimalHeading"
+        android:background="@drawable/turquoise_border"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:maxLines="1"/>
+    <EditText
+        android:id="@+id/addAnimalType"
+        android:layout_width="350dp"
+        android:layout_marginLeft="10dp"
+        android:layout_height="60dp"
+        android:hint="Enter your pet's type"
+        android:padding="12dp"
+        android:textSize="18sp"
+        android:background="@drawable/turquoise_border"
+        android:layout_below="@id/addAnimalTitle"
+        android:layout_marginTop="16dp"
+        android:maxLines="1"/>
+    <EditText
+        android:id="@+id/addAnimalAge"
+        android:layout_width="350dp"
+        android:layout_marginLeft="10dp"
+        android:layout_height="60dp"
+        android:hint="Enter your pet's age"
+        android:padding="12dp"
+        android:textSize="18sp"
+        android:background="@drawable/turquoise_border"
+        android:layout_below="@id/addAnimalType"
+        android:layout_marginTop="16dp"
+        android:maxLines="1"/>
+    <EditText
+        android:id="@+id/addAnimalSex"
+        android:layout_width="350dp"
+        android:layout_marginLeft="10dp"
+        android:layout_height="60dp"
+        android:hint="Enter your pet's sex"
+        android:padding="12dp"
+        android:textSize="18sp"
+        android:background="@drawable/turquoise_border"
+        android:layout_below="@id/addAnimalAge"
+        android:layout_marginTop="16dp"
+        android:maxLines="1"/>
+
+    <EditText
+        android:id="@+id/addAnimalWeight"
+        android:layout_width="350dp"
+        android:layout_marginLeft="10dp"
+        android:layout_height="60dp"
+        android:hint="Enter your pet's weight"
+        android:padding="12dp"
+        android:textSize="18sp"
+        android:background="@drawable/turquoise_border"
+        android:layout_below="@id/addAnimalSex"
+        android:layout_marginTop="16dp"
+        android:maxLines="1"/>
+    <EditText
+        android:id="@+id/addAnimalBehavior"
+        android:layout_width="350dp"
+        android:layout_marginLeft="10dp"
+        android:layout_height="60dp"
+        android:hint="Enter your pet's behavior"
+        android:padding="12dp"
+        android:textSize="18sp"
+        android:background="@drawable/turquoise_border"
+        android:layout_below="@id/addAnimalWeight"
+        android:layout_marginTop="16dp"
+        android:maxLines="1"/>
+</RelativeLayout>
