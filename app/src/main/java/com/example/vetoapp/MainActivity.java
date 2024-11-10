@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vetoapp.databinding.ActivityMainBinding;
-import com.example.vetoapp.ui.activities.AddAnimalActivity;
+import com.example.vetoapp.ui.activities.*;
 
 public  class MainActivity extends AppCompatActivity {
 
@@ -18,8 +18,8 @@ public  class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.addButton.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, AddAnimalActivity.class);
-            startActivity(intent);
+           // Intent intent = new Intent(MainActivity.this, activity_main.class);
+         //   startActivity(intent);
         });
     }
 }
