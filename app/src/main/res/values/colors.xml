@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="turquoise">#00A7C2</color>
+    <color name="orange">#FF8A00</color>
+    <color name="grey">#e8e8e8</color>
+    <color name="dark_turquoise">#00596b</color>
+    <color name="lite_blue">#6DAEE5</color>
+    <color name="colorPrimary">#00A7C2</color>
+    <color name="colorPrimaryDark">#00596b</color>
+    <color name="colorAccent">#FF8A00</color>
+    <color name="beige">#f2ebdd</color>
+
+
+</resources>

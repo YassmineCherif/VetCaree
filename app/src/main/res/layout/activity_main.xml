@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/beige">
+
+    <!-- Centered Logo Image at the Top -->
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="243dp"
+        android:layout_height="209dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/logo_description"
+        android:src="@drawable/logo" />
+
+    <!-- "Ajouter un dossier médical" Button positioned at the bottom-center -->
+    <Button
+        android:id="@+id/adddossier"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="70dp"
+        android:backgroundTint="@color/turquoise"
+        android:text="Ajouter un dossier médical"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-medium"
+        android:padding="10dp"
+        app:cornerRadius="8dp" />
+
+    <!-- "Ajouter un Rendez-vous" Button positioned above "Ajouter un dossier médical" Button -->
+    <Button
+        android:id="@+id/addrendezvous"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/adddossier"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/turquoise"
+        android:text="Ajouter un Rendez-vous"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-medium"
+        android:padding="10dp"
+        app:cornerRadius="8dp" />
+
+
+    <!-- Floating Action Buttons, if needed -->
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        android:layout_above="@id/adddossier"
+        android:layout_marginBottom="99dp"
+        android:layout_centerHorizontal="true"
+
+        android:backgroundTint="@color/turquoise"
+        android:fontFamily="sans-serif-medium"
+        android:padding="10dp"
+        android:text="Ajouter un animal"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:cornerRadius="8dp" />
+    <!--
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/readButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/turquoise"
+        android:contentDescription="@string/read_button_description"
+        android:src="@drawable/baseline_list"
+        app:tint="@color/white" />
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/turquoise"
+        android:contentDescription="@string/add_button_description"
+        android:src="@drawable/baseline_add_24"
+        app:tint="@color/white" />    -->
+
+</RelativeLayout>

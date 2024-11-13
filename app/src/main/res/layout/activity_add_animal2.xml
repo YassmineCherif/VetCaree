@@ -1,0 +1,148 @@
+<!-- res/layout/activity_edit_animal.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/beige">
+
+
+    <!-- Title TextView -->
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Add Animal :"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/orange"
+        android:layout_gravity="center"
+        android:layout_marginBottom="24dp" />
+
+
+    <!-- Name Label and EditText -->
+    <TextView
+        android:id="@+id/animalNameLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name:"
+        android:textColor="@color/turquoise"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/addAnimalTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name" />
+
+    <!-- Type Label and EditText -->
+    <TextView
+        android:id="@+id/animalTypeLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Type:"
+        android:textColor="@color/turquoise"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/addAnimalType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Type" />
+
+    <!-- Age Label and EditText -->
+    <TextView
+        android:id="@+id/animalAgeLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Age:"
+        android:textColor="@color/turquoise"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/addAnimalAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Age" />
+
+    <!-- Sex Label and EditText -->
+    <TextView
+        android:id="@+id/animalSexLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sex:"
+        android:textColor="@color/turquoise"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/addAnimalSex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Sex" />
+
+    <!-- Weight Label and EditText -->
+    <TextView
+        android:id="@+id/animalWeightLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Weight:"
+        android:textColor="@color/turquoise"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/addAnimalWeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Weight" />
+
+    <!-- Behavior Label and EditText -->
+    <TextView
+        android:id="@+id/animalBehaviorLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Behavior:"
+        android:textColor="@color/turquoise"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/addAnimalBehavior"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Behavior" />
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <!-- Read Button -->
+        <Button
+            android:id="@+id/readButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/orange"
+            android:text="My Pets"
+            android:layout_marginEnd="8dp" />
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/orange"
+            android:text="Add" />
+    </LinearLayout>
+
+
+</LinearLayout>
