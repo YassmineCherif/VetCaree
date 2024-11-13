@@ -32,4 +32,9 @@ public interface AnimalDao {
     @Query("SELECT * FROM animalTable WHERE name = :name LIMIT 1")
     Animal getAnimalByName(String name);
 
+    @Query("SELECT * FROM animalTable WHERE userid = :userId")
+    List<Animal> getAnimalsByUserId(int userId);
+
+
+
 }

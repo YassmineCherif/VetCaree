@@ -17,6 +17,7 @@ import com.example.vetoapp.dao.AnimalDao;
 import com.example.vetoapp.models.Animal;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -26,6 +27,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
     private List<Animal> animals;
     private AnimalDao animalDao;
     private ExecutorService executorService; // Use a thread pool for background tasks
+    private static final int USER_ID = 1; // Static user ID for filtering and adding animals
 
     public AnimalAdapter(List<Animal> animals, AnimalDao animalDao) {
         this.animals = animals;
@@ -68,20 +70,25 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
         return animals != null ? animals.size() : 0;
     }
 
-    public void updateData(List<Animal> animals) {
-        this.animals = animals;
+    public void updateData(List<Animal> allAnimals) {
+        this.animals = new ArrayList<>();
+        for (Animal animal : allAnimals) {
+            if (animal.getUserid() == USER_ID) {
+                this.animals.add(animal); // Only add animals for the specific user ID
+            }
+        }
         notifyDataSetChanged();
     }
 
+
     private void deleteAnimal(Animal animal, int position) {
-        // Use the executor service to delete the animal in a background thread
         executorService.execute(() -> {
             try {
-                animalDao.delete(animal);
-                animals.remove(position);
-
-                // Notify the adapter of item removed on the main thread
-                new Handler(Looper.getMainLooper()).post(() -> notifyItemRemoved(position));
+                if (animal.getUserid() == USER_ID) { // Ensure only user-specific animals are deleted
+                    animalDao.delete(animal);
+                    animals.remove(position);
+                    new Handler(Looper.getMainLooper()).post(() -> notifyItemRemoved(position));
+                }
             } catch (Exception e) {
                 Log.e("AnimalAdapter", "Error deleting animal", e);
             }

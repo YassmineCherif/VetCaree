@@ -97,6 +97,9 @@ public class UpdateAnimalActivity extends AppCompatActivity {
                     animal.setWeight(weightEditText.getText().toString());
                     animal.setBehavior(behaviorEditText.getText().toString());
 
+                    // Set the userId field (static for now, replace with actual userId in a real app)
+                    animal.setUserid(1);  // Example: setting userId to 1, you should replace this with the actual user ID
+
                     // Save the updated animal in a background thread
                     Executors.newSingleThreadExecutor().execute(() -> {
                         animalDao.update(animal);

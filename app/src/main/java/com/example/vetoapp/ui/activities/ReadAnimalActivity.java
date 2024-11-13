@@ -22,11 +22,14 @@ import java.util.List;
 import java.util.concurrent.Executors;
 
 public class ReadAnimalActivity extends AppCompatActivity {
-//search
+    // Declare the RecyclerView and Adapter
     private RecyclerView recyclerView;
     private AnimalAdapter animalAdapter;
     private AnimalDao animalDao;
     private List<Animal> allAnimals;
+
+    // Static user ID for now (change this later to dynamic user ID)
+    private int userId = 1; // Replace this with the actual logged-in user's ID when authentication is implemented
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +48,8 @@ public class ReadAnimalActivity extends AppCompatActivity {
         animalAdapter = new AnimalAdapter(new ArrayList<>(), animalDao);
         recyclerView.setAdapter(animalAdapter);
 
-        // Fetch all animals and update the adapter
-        fetchAnimals();
+        // Fetch animals by user ID
+        fetchAnimalsByUserId(userId);
 
         // Set up the SearchView to filter the animals
         SearchView searchView = findViewById(R.id.searchView); // Correct SearchView
@@ -66,14 +69,12 @@ public class ReadAnimalActivity extends AppCompatActivity {
         // Set up the Download PDF button
         FloatingActionButton downloadPdfButton = findViewById(R.id.downloadPdfButton);
         downloadPdfButton.setOnClickListener(view -> downloadAnimalInfoAsPdf());
-
-
     }
 
-
-    private void fetchAnimals() {
+    private void fetchAnimalsByUserId(int userId) {
         Executors.newSingleThreadExecutor().execute(() -> {
-            allAnimals = animalDao.getAllAnimals();  // Store the full list for later filtering
+            // Fetch only animals associated with the current userId
+            allAnimals = animalDao.getAnimalsByUserId(userId);  // Assuming you implement this in the DAO
             runOnUiThread(() -> animalAdapter.updateData(allAnimals));
         });
     }
@@ -108,11 +109,9 @@ public class ReadAnimalActivity extends AppCompatActivity {
         }
     }
 
-
-
     @Override
     protected void onResume() {
         super.onResume();
-        fetchAnimals();
+        fetchAnimalsByUserId(userId);
     }
 }

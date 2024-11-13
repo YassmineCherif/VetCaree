@@ -30,6 +30,9 @@ public class Animal implements Serializable {
     @ColumnInfo(name = "behavior")
     private String behavior;
 
+    @ColumnInfo(name = "userid") // Foreign key for user ID
+    private int userid;
+
     // Default constructor required by Room
     public Animal() {
     }
@@ -44,6 +47,18 @@ public class Animal implements Serializable {
         this.weight = weight;
         this.behavior = behavior;
     }
+
+    @Ignore
+    public Animal(String name, String type, String age, String sex, String weight, String behavior, int userid) {
+        this.name = name;
+        this.type = type;
+        this.age = age;
+        this.sex = sex;
+        this.weight = weight;
+        this.behavior = behavior;
+        this.userid = userid;
+    }
+
 
     // Getters and setters
     public int getId() {
@@ -65,6 +80,7 @@ public class Animal implements Serializable {
     public String getType() {
         return type;
     }
+
 
     public void setType(String type) {
         this.type = type;
@@ -101,4 +117,14 @@ public class Animal implements Serializable {
     public void setBehavior(String behavior) {
         this.behavior = behavior;
     }
+
+    public int getUserid() {
+        return userid;
+    }
+
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
+
+
 }

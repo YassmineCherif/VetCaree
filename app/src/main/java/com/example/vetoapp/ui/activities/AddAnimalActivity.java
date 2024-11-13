@@ -44,6 +44,9 @@ public class AddAnimalActivity extends AppCompatActivity {
                 return; // Exit the method if validation fails
             }
 
+            // For now, we're setting a static user ID of 1
+            int userId = 1; // This should be dynamically fetched from the logged-in user's info
+
             // Check if the animal with the same name already exists in the database
             Executors.newSingleThreadExecutor().execute(() -> {
                 Animal existingAnimal = animalDao.getAnimalByName(name);  // Assume getAnimalByName is implemented in the DAO
@@ -52,8 +55,8 @@ public class AddAnimalActivity extends AppCompatActivity {
                     // If animal already exists, show a toast message
                     runOnUiThread(() -> Toast.makeText(AddAnimalActivity.this, "Animal already exists", Toast.LENGTH_SHORT).show());
                 } else {
-                    // Create a new Animal object if the name is unique
-                    Animal animal = new Animal(name, type, age, sex, weight, behavior);
+                    // Create a new Animal object, adding the userId to associate with the specific user
+                    Animal animal = new Animal(name, type, age, sex, weight, behavior, userId);
 
                     // Insert the animal into the database using a background thread
                     Executors.newSingleThreadExecutor().execute(() -> {

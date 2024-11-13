@@ -8,8 +8,7 @@ import com.example.vetoapp.dao.AnimalDao;
 import com.example.vetoapp.models.Animal;
 
 import androidx.room.Database;
-
-@Database(entities = {Animal.class}, version = 1, exportSchema = false)
+@Database(entities = {Animal.class}, version = 2, exportSchema = false)
 public abstract class MyDataBase extends RoomDatabase {
     public abstract AnimalDao animalDao();
 
@@ -29,4 +28,3 @@ public abstract class MyDataBase extends RoomDatabase {
         return instance;
     }
 }
-
