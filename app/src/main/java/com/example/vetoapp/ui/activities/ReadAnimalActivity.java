@@ -1,6 +1,10 @@
 package com.example.vetoapp.ui.activities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,7 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.vetoapp.R;
 import com.example.vetoapp.dao.AnimalDao;
 import com.example.vetoapp.models.Animal;
+import com.example.vetoapp.models.PDFExportUtility;
 import com.example.vetoapp.utils.MyDataBase;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -54,6 +62,12 @@ public class ReadAnimalActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        // Set up the Download PDF button
+        FloatingActionButton downloadPdfButton = findViewById(R.id.downloadPdfButton);
+        downloadPdfButton.setOnClickListener(view -> downloadAnimalInfoAsPdf());
+
+
     }
 
 
@@ -75,6 +89,26 @@ public class ReadAnimalActivity extends AppCompatActivity {
         }
         animalAdapter.updateData(filteredList);  // Update the adapter with the filtered list
     }
+
+    private void downloadAnimalInfoAsPdf() {
+        if (allAnimals == null || allAnimals.isEmpty()) {
+            Toast.makeText(this, "No animal data available for export", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        File pdfFile = PDFExportUtility.createAnimalPDF(this, allAnimals);
+        if (pdfFile != null) {
+            Uri uri = Uri.fromFile(pdfFile);
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(uri, "application/pdf");
+            intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            startActivity(Intent.createChooser(intent, "Open PDF"));
+        } else {
+            Toast.makeText(this, "Failed to generate PDF", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 
     @Override
     protected void onResume() {
