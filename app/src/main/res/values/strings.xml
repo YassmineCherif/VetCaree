@@ -1,9 +1,7 @@
 <resources>
-    <string name="app_name">VetoApp</string>
-    <string name="add_button_description">Add</string>
-    <string name="delete_button_description">Delete</string>
-    <string name="read_button_description">Read</string>
-    <string name="edit_button_description">Edit</string>
-    <string name="logo_description">logo</string>
-
+    <string name="app_name">user_module</string>
+    <string name="email">Email</string>
+    <string name="register">Register</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
 </resources>

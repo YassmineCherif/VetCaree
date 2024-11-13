@@ -1,23 +1,42 @@
+import java.util.Properties
+
+// build.gradle.kts (app module)
+
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
 }
 
 android {
-    namespace = "com.example.vetoapp"
+    namespace = "com.example.user_module"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.vetoapp"
-        minSdk = 24
+        applicationId = "com.example.user_module"
+        minSdk = 31
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
+
+        // Load environment variables from local.properties
+        val localProperties = File(rootDir, "local.properties")
+        val properties = Properties()
+
+        if (localProperties.exists()) {
+            properties.load(localProperties.inputStream())
         }
+
+        val smtpHost: String = properties.getProperty("smtpHost", "")
+        val smtpPort: String = properties.getProperty("smtpPort", "")
+        val emailAddress: String = properties.getProperty("emailAddress", "")
+        val emailPassword: String = properties.getProperty("emailPassword", "")
+
+        // Pass them as buildConfigFields
+        buildConfigField("String", "SMTP_HOST", "\"$smtpHost\"")
+        buildConfigField("String", "SMTP_PORT", "\"$smtpPort\"")
+        buildConfigField("String", "EMAIL_ADDRESS", "\"$emailAddress\"")
+        buildConfigField("String", "EMAIL_PASSWORD", "\"$emailPassword\"")
     }
 
     buildTypes {
@@ -29,55 +48,29 @@ android {
             )
         }
     }
+    // Enable BuildConfig generation
+    buildFeatures {
+        buildConfig = true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-    buildFeatures {
-        compose = true
-        viewBinding = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
 
 dependencies {
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-
-    // Add Material Components dependency for FloatingActionButton
-    implementation("com.google.android.material:material:1.9.0")
-
-
+    implementation(libs.javamail)
+    implementation(libs.activation)
+    implementation(libs.bcrypt)
+    implementation(libs.appcompat)
+    implementation(libs.material)
+    implementation(libs.activity)
+    implementation(libs.constraintlayout)
+    implementation(libs.volley)
+    implementation(libs.room.common)
+    implementation(libs.room.runtime)
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
-
-    implementation ("com.itextpdf:itextpdf:5.5.13.2")
-
-    implementation ("androidx.room:room-runtime:2.2.5")
-    annotationProcessor ("androidx.room:room-compiler:2.2.5")
-
-
-
+    androidTestImplementation(libs.ext.junit)
+    androidTestImplementation(libs.espresso.core)
+    annotationProcessor(libs.room.compiler)
 }

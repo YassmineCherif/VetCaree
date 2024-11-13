@@ -19,6 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "VetoApp"
+rootProject.name = "user_module"
 include(":app")
- 
